@@ -1,6 +1,6 @@
 body {
   font: 16px Helvetica, Arial, sans-serif;
-
+}
 a {
   color: #00B7FF;
 }
@@ -39,7 +39,7 @@ a {
   background-color: #f05657;
   border-color: #f05657;
 }
-.footer-nav{
+.footer-nav {
   position: absolute;
   bottom: 0;
   width: 100vw;
@@ -47,8 +47,6 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-.iconimages {
 }
 .iconimages:hover {
   background-color: black;
