@@ -8,6 +8,11 @@ const complaintSchema = new Schema(
 			ref: 'User',
 			childPath: 'complaint'
 		},
+		typeComplaint:{
+			type: String,
+			enum:['ROBO', 'ACOSO SEXUAL', 'GRUPOS SOSPECHOSOS', 'ENFRENTAMIENTO ARMADO', 'AGRESIÓN'],
+			required: true
+		},
 		text: {
 			type: String,
 			required: true

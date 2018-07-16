@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
-	.connect('mongodb://localhost/appwebiron', { useMongoClient: true })
+	.connect(process.env.DB, { useMongoClient: true })
 	.then(() => {
 		console.log('Connected to Mongo!');
 	})
@@ -29,7 +29,7 @@ const app = express();
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Express View engine setup
