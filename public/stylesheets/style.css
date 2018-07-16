@@ -1,17 +1,45 @@
+body {
+  font: 16px Helvetica, Arial, sans-serif; }
+
 a {
   color: #00B7FF; }
 
 /* Layout */
-.navbar-dark {
-  background-color: gray;
-  height: 3em; }
-
-.btn-outline-success {
-  color: #f05657;
-  border-color: #f05657; }
-
-.btn-outline-success:hover {
-  background-color: #f05657;
-  border-color: #f05657; }
+@media only screen and (min-width: 320px) {
+  .navbar {
+    width: 100vw; }
+  .navbar-dark {
+    height: 150px;
+    background-color: gray; }
+  .navbar-dark {
+    color: #fff; }
+  .navbar-toggler {
+    font-size: 3em; }
+  .form-inline {
+    height: 100px;
+    margin: 0;
+    padding: 0; }
+  .form {
+    height: 90px;
+    width: 600px;
+    font-size: 80px;
+    margin: 0;
+    padding: 0; }
+  .btn-outline-success {
+    color: #f05657;
+    border-color: #f05657; }
+  .btn-outline-success:hover {
+    background-color: #f05657;
+    border-color: #f05657; }
+  .footer-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; }
+  .iconimages:hover {
+    background-color: black; } }
 
 /*# sourceMappingURL=style.css.map */
