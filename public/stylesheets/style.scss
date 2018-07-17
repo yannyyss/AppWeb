@@ -5,10 +5,10 @@ a {
 	color: #00b7ff;
 }
 /* Layout */
-@media only screen and (min-width: 320px) {
+
 #map {
   width: 100%;
-  height: 85vh;
+  height: 70vh;
   background-color: black; 
 }
 
@@ -44,7 +44,7 @@ a {
     margin-left: 100px;
 }
 .btn-primary:hover {
-  background-color: #ccc;
+  background-color: #707070;
   border-color: #707070;
 }
 .btn-outline-success {
@@ -59,6 +59,8 @@ a {
   position: absolute;
   bottom: 0;
   width: 100vw;
+  padding: 0;
+  margin: 0;
   background-color: #cccccc;
   display: flex;
   flex-direction: row;
@@ -66,5 +68,4 @@ a {
 }
 .iconimages:hover {
   background-color: #707070;
-}
 }

@@ -65,7 +65,8 @@ const passport = require('./helpers/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
-const index = require('./routes/index');
+//le dice que guarde en la variable, lo que se encuentra en la dirección
+const index = require('./routes/index'); 
 const auth = require('./routes/auth');
 const map = require('./routes/incidencias');
 app.use('/', index);
