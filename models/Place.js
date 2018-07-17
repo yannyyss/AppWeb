@@ -17,7 +17,8 @@ const placeSchema = new Schema({
                 type: Number
             }
         ]
-    }
+    },
+    comentario: String
 },{
     timestamps: {
         createdAt: "created_at",
