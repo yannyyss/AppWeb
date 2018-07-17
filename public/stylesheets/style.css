@@ -25,10 +25,18 @@ a {
     padding: 0; }
   .form {
     height: 90px;
-    width: 550px;
+    width: 800px;
     font-size: 80px;
     margin: 0;
     padding: 0; }
+  .btn-primary {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    margin-left: 100px; }
+  .btn-primary:hover {
+    background-color: #ccc;
+    border-color: #707070; }
   .btn-outline-success {
     color: #f05657;
     border-color: #f05657; }

@@ -5,10 +5,7 @@
   </button>
   <form class="form-inline">
     <input class="form" type="search" placeholder="Search" id="address">
-    <a class="navbarbrand" href="#" id="lupita">
-      <img src="images/boton-buscar1.png" width="135" height="135" alt="">
-    </a>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" id="malandro" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       <img src="images/boton-superior-malandro-2.png" width="135" height="135" alt="" value="save">
     </button>
   </form>
@@ -76,7 +73,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Reportar</button>
+        <button type="submit" class="btn btn-primary">Reportar</button>
       </div>
     </div>
   </div>
@@ -143,9 +140,9 @@
     });
   }
 
-  lupita.addEventListener('click', autoComplete(search))
+    //lupita.addEventListener('click', autoComplete(search));
 
-
+    malandro.addEventListener('click',autoComplete(search));
 
   function startMap() {
     /*const ironhackMex = {
