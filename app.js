@@ -69,6 +69,7 @@ app.use(passport.session());
 const index = require('./routes/index'); 
 const auth = require('./routes/auth');
 const map = require('./routes/incidencias');
+// Make everything available inside the routes: (/ + variable)
 app.use('/', index);
 app.use('/', auth);
 app.use('/', map);
