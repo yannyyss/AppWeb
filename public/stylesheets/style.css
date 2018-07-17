@@ -5,35 +5,10 @@ a {
   color: #00b7ff; }
 
 /* Layout */
-#map {
-  width: 100%;
-  height: 70vh;
-  background-color: black; }
-
-.navbar {
-  width: 100vw; }
-
-.navbar-dark {
-  height: 150px;
-  background-color: gray; }
-
-.navbar-dark {
-  color: #fff; }
-
-.navbar-toggler {
-  font-size: 3em; }
-
-.form-inline {
-  height: 100px;
-  margin: 0;
-  padding: 0; }
-
 .form {
-  height: 90px;
-  width: 800px;
-  font-size: 80px;
-  margin: 0;
-  padding: 0; }
+  display: flex;
+  flex-flow: row nowrap !important;
+  align-items: center; }
 
 .btn-primary {
   color: #fff;
@@ -66,5 +41,10 @@ a {
 
 .iconimages:hover {
   background-color: #707070; }
+
+#map {
+  width: 100%;
+  height: 70vh;
+  background-color: black; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,15 +1,32 @@
-<nav class="navbar navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <form class="form-inline">
-    <input class="form" type="search" placeholder="Search" id="address">
-    <button type="button" id="malandro" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      <img src="images/boton-superior-malandro-2.png" width="135" height="135" alt="" value="save">
-    </button>
-  </form>
-</nav>
+<nav class="navbar navbar-dark bg-dark navbar-nav">
+      <div class="form">
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+        <form class="form">
+        <input class="form-control" type="search" placeholder="Search" id="address">
+        <button type="button" class="btn bg-dark" data-toggle="modal" data-target="#exampleModal" id="malandro">
+          <img src="images/boton-superior-malandro-2.png" width="40" height="40" alt="malandro" >
+        </button>
+      </form>
+      </div>
+    </nav>
 
 <div id="map"></div>
 <footer>
@@ -85,7 +102,7 @@
 
   const direccion = document.getElementById('direccion');
   const search = document.getElementById('address');
-  const lupita = document.getElementById('lupita');
+  const malandro = document.getElementById('malandro');
   const image = {
     url:'images/marcador-malandro-rojo-small.png',
     size: new google.maps.Size(59, 80)
