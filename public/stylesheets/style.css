@@ -6,6 +6,10 @@ a {
 
 /* Layout */
 @media only screen and (min-width: 320px) {
+  #map {
+    width: 100%;
+    height: 85vh;
+    background-color: black; }
   .navbar {
     width: 100vw; }
   .navbar-dark {
@@ -40,6 +44,6 @@ a {
     flex-direction: row;
     justify-content: space-around; }
   .iconimages:hover {
-    background-color: black; } }
+    background-color: #707070; } }
 
 /*# sourceMappingURL=style.css.map */

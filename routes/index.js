@@ -3,7 +3,7 @@ const router  = express.Router();
 
 /* MiddleWheres */
 
-/*
+/* Splash
 const splash = (req, res, next)=> {
   res.render("splash");
   setTimeout(function () {    
@@ -11,6 +11,13 @@ const splash = (req, res, next)=> {
   }, 3000);
   //
 }*/
+
+/* map */
+
+router.get('/map',(req,res)=>{
+  res.render('map');
+});
+
 
 /* GET home page */
 router.get('/', /* splash,*/ (req, res, next) => {
