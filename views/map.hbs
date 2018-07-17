@@ -1,5 +1,5 @@
 <div id="map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0iBJ86eZUGkhbuWhS7b4_B3-8cRYQgTQ"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGQ8r0BfjX69HJHYdnGnoZ5K1m9YwjcQo"></script>
 <script>
     /* Código de Oswaldo
     let center = {
@@ -61,7 +61,10 @@
                             zoom: 20
                         }
                     );
-                    var image = 'images/boton-superior-malandro1.png';
+                    var image = {
+                            url:'images/marcador-malandro-rojo-big.png',
+                            size: new google.maps.Size(150, 150)
+                        };
                    
                     const myMarker = new google.maps.Marker({
                         position: center,
