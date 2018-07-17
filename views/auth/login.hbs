@@ -1,4 +1,4 @@
-<style>
+{{!-- <style>
   @media only screen and (max-width: 1024px) {
     .container{
     max-height: 100vh;
@@ -21,8 +21,12 @@
     font-size: 2.5rem;
   }
 }
-  
-</style>
+  body {
+    background-image: url('images/Fondo-Lugar.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style> --}}
 <div class="container align-middle modal-dialog-centered" style="">
     <div class="row mx-auto">
       <div class="col">
@@ -46,7 +50,7 @@
           <label for="password01">Password:</label>
           <input class="form-control" id="password01" placeholder="Password" value="{{password}}" required placeholder="Tu password de usuario" name="password" type="password">
         </div>
-        <button type="submit" class="btn col btn-form mx-auto">Enviar</button>
+        <button type="submit" class="btn col btn-form mx-auto btn-outline-success">Enviar</button>
       </form>
     </div>
   </div>
