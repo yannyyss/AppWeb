@@ -56,4 +56,28 @@ a {
   height: 83vh;
   background-color: black; }
 
+.index-background {
+  background-color: #343a40;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; }
+
+.index-background h2 {
+  color: #ccc;
+  padding: 0 10%; }
+
+.index-background div h4 {
+  color: #ccc;
+  padding: 5% 10%; }
+
+.index-background a {
+  color: #f05657;
+  font-size: 1.5em;
+  padding-top: 0%; }
+
 /*# sourceMappingURL=style.css.map */
