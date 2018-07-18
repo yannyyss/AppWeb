@@ -1,5 +1,6 @@
 body {
-  font: 16px Helvetica, Arial, sans-serif; }
+  font: 16px Helvetica, Arial, sans-serif;
+  background-color: #343a40; }
 
 a {
   color: #00b7ff; }
@@ -31,6 +32,13 @@ a {
 .btn-outline-success:hover {
   background-color: #f05657;
   border-color: #f05657; }
+
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show > .btn-outline-success.dropdown-toggle {
+  background-color: #f05657;
+  border-color: #f05657; }
+
+.btn-outline-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(240, 86, 87, 0.5); }
 
 .footer-nav {
   position: absolute;
@@ -79,5 +87,27 @@ a {
   color: #f05657;
   font-size: 1.5em;
   padding-top: 0%; }
+
+/*Login*/
+.titles {
+  color: #ccc; }
+
+.class-name {
+  color: #ccc; }
+
+#container-login {
+  background-color: #343a40;
+  height: 100%; }
+
+.button-login {
+  margin: 10% 0%; }
+
+.messages-login h4 {
+  color: #707070;
+  text-align: center; }
+
+#button-login-down {
+  margin-top: 5%;
+  margin-bottom: 10%; }
 
 /*# sourceMappingURL=style.css.map */
