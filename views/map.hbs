@@ -34,6 +34,7 @@
 </nav>
 
 <div id="map"></div>
+
 <footer>
   <nav class="footer-nav">
     <a class="iconimages" href="#">
@@ -73,12 +74,12 @@
           <div class="form-group">
             <select name="tipodelugar" id="tipodelugar" class="form-control">
               <option selected>Tipo de Incidente</option>
-              <option value="Robo">Robo</option>
-              <option value="Acoso Sexual">Acoso Sexual</option>
-              <option value="Grupos Sospechosos">Grupos Sospechosos</option>
-              <option value="Enfrentamientos Armados">Enfrentamientos Armados</option>
-              <option value="Sin Iluminación">Sin Iluminación</option>
-              <option value="Agresión">Agresión</option>
+              <option value="ROBO">Robo</option>
+              <option value="ACOSO-SEXUAL">Acoso Sexual</option>
+              <option value="GRUPOS-SOSPECHOSOS">Grupos Sospechosos</option>
+              <option value="ENFRENTAMIENTOS-ARMADOS">Enfrentamientos Armados</option>
+              <option value="SIN-ILUMINACION">Sin Iluminación</option>
+              <option value="AGRESION">Agresión</option>
             </select>
           </div> 
           <div class="form-group row">
@@ -107,7 +108,9 @@
 
     /* New Dot */
 
-
+    //const items = '{{items}}';
+   
+    console.log('hoyyyyy')
     const search = document.getElementById('address');
     const malandro = document.getElementById('malandro');
     const image = {

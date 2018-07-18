@@ -30,4 +30,15 @@ router.post('/new', isLoggedIn, (req, res, next) => {
 		.catch((e) => next(e));
 });
 
+router.get('/test', (req,res)=>{
+	if(Object.keys(req.query).length > 0){
+		console.log(Object.keys(req.query)); //imprime la llave de query
+		Place.find({tipodelugar: { $in: Object.keys(req.query) } //Busca en todos las instacias que se han creado con el modelo Place, el query que conincida con la key
+		}).then(items => {
+		res.json(items); //muestra un json en el navegador
+		});
+	}
+	//res.send("no hay querys mijo")
+})
+
 module.exports = router;
