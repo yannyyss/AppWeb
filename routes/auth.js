@@ -9,7 +9,7 @@ const errDict = {
 };
 
 function isAuth(req, res, next) {
-	if (req.isAuthenticated()) return res.redirect('/login');
+	if (req.isAuthenticated()) return res.redirect('/map');
 	return next();
 }
 
@@ -40,7 +40,7 @@ router.post('/signup', (req, res, next) => {
 			//activation link
 			sendActivationLink(user);
 			//loguearlo automaticamente
-			res.redirect('/login');
+			res.redirect('/map');
 		})
 		.catch((e) => {
 			req.body.err = errDict[e.name];
@@ -49,7 +49,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', isAuth, (req, res, next) => {
-	console.log(req.query.next)
+	console.log(req.query.next);
 	res.render('auth/login', { next: req.query.next });
 });
 

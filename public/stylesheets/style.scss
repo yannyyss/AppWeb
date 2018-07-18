@@ -1,5 +1,6 @@
 body {
 	font: 16px Helvetica, Arial, sans-serif;
+	background-color: #343a40;
 }
 a {
 	color: #00b7ff;
@@ -32,22 +33,84 @@ a {
 	background-color: #f05657;
 	border-color: #f05657;
 }
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
+	background-color: #f05657;
+	border-color: #f05657;
+}
+.btn-outline-success:focus {
+    box-shadow: 0 0 0 0.2rem rgba(240,86,87,.5);
+}
 .footer-nav {
 	position: absolute;
 	bottom: 0;
-	width: 100vw;
+	width: 100%;
 	padding: 0;
 	margin: 0;
 	background-color: #cccccc;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	max-height: 90px;
+}
+.iconimages img{
+	max-height: 50px;
+	max-width: 50px;
 }
 .iconimages:hover {
 	background-color: #707070;
 }
 #map {
 	width: 100%;
-	height: 70vh;
+	height: 83vh;
 	background-color: black;
+}
+.index-background {
+	background-color: #343a40;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	
+}
+.index-background h2 {
+	color: #ccc;
+	padding:0 10%;
+}
+.index-background div h4 {
+	color: #ccc;
+	padding: 5% 10%;
+}
+.index-background a {
+	color: #f05657;
+	font-size: 1.5em;
+	padding-top: 0%;
+}
+/*Login*/
+.titles {
+	color: #ccc;
+}
+.class-name {
+	color: #ccc;
+}
+#container-login {
+	background-color: #343a40;
+	height: 100%;
+}
+.button-login {
+	margin: 10% 0%;
+	
+}
+.messages-login h4 {
+	color: #707070;
+	text-align: center;
+
+}
+#button-login-down {
+	margin-top: 5%;
+	margin-bottom: 10%;
+
 }

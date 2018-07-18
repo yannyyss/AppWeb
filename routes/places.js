@@ -5,7 +5,7 @@ const passport = require('passport');
 const Place = require('../models/Place');
 
 function isAuth(req, res, next) {
-	if (req.isAuthenticated()) return res.redirect('/login');
+	if (req.isAuthenticated()) return res.redirect('/map');
 	return next();
 }
 
@@ -15,7 +15,7 @@ function isLoggedIn(req, res, next) {
 }
 /* map */
 
-router.get('/map',isAuth,(req,res)=>{
+router.get('/map',isLoggedIn,(req,res)=>{
     res.render('map');
   });
 
