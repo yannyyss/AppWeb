@@ -15,7 +15,7 @@ function isLoggedIn(req, res, next) {
 }
 /* map */
 
-router.get('/map',isLoggedIn,(req,res)=>{
+router.get('/',isLoggedIn,(req,res)=>{
     res.render('map');
   });
 
