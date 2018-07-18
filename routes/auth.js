@@ -37,7 +37,6 @@ router.post('/signup', (req, res, next) => {
 	}
 	User.register(req.body, req.body.password)
 		.then((user) => {
-			console.log('entraste');
 			//activation link
 			sendActivationLink(user);
 			//loguearlo automaticamente
@@ -50,6 +49,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', isAuth, (req, res, next) => {
+	console.log(req.query.next)
 	res.render('auth/login', { next: req.query.next });
 });
 
