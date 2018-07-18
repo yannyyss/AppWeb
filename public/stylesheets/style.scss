@@ -9,6 +9,10 @@ a {
 	display: flex;
 	flex-flow: row nowrap !important;
 	align-items: center;
+	flex-grow: 1;
+}
+.titles {
+	margin-top: 25%;
 }
 .btn-primary {
 	color: #fff;

@@ -13,7 +13,7 @@ exports.sendActivationLink = (user) => {
 		from: '"Malandro 👻" <malandro@gmail.com>', // sender address
 		to: user.email, // list of receivers
 		subject: 'Bienvenido ✔', // Subject line
-		html: `<h2>Activa tu cuenta: <a href="http://localhost:3000/activation"> Click aqui </a></h2>` // plain text 
+		html: `<h2>Activa tu cuenta: <a href="https://sleepy-hollows-30088.herokuapp.com/activation"> Click aqui </a></h2>` // plain text 
 	};
 
 	/* ejemplo Bliss const options = {

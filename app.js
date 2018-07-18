@@ -68,11 +68,10 @@ app.use(passport.session());
 //le dice que guarde en la variable, lo que se encuentra en la dirección
 const index = require('./routes/index'); 
 const auth = require('./routes/auth');
-const map = require('./routes/incidencias');
+const places = require('./routes/places');
 // Make everything available inside the routes: (/ + variable)
-app.use('/', index);
+app.use('/places', places);
 app.use('/', auth);
-app.use('/', map);
-
+app.use('/', index);
 
 module.exports = app;
