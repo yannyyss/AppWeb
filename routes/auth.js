@@ -9,7 +9,7 @@ const errDict = {
 };
 
 function isAuth(req, res, next) {
-	if (req.isAuthenticated()) return res.redirect('/profile');
+	if (req.isAuthenticated()) return res.redirect('/map');
 	return next();
 }
 
@@ -56,7 +56,7 @@ router.get('/login', isAuth, (req, res, next) => {
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
 	if (req.body.next) res.redirect(req.body.next);
 	req.app.locals.loggedUser = req.user;
-	res.redirect('/profile');
+	res.redirect('/map');
 });
 
 router.get('/logout', (req, res, next) => {
