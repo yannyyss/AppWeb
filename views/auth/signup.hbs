@@ -1,44 +1,15 @@
-{{!-- <style>
-  @media only screen and (max-width: 1024px) {
-    .container{
-    max-height: 100vh;
-  }
-  .bd-title {
-    margin-top: 1rem;
-    margin-bottom: .5rem;
-    font-weight: 300;
-    color: #343a3f;
-    padding-top: 6rem;
-  }
-  form button.btn-form{
-    font-size: 3rem;
-    padding: 0 100px;
-  }
-  .form-group, .form-group input{
-    font-size: 3rem;
-  }
-  .form-group input{
-    font-size: 2.5rem;
-  }
-}
-  body {
-    background-image: url('images/Fondo-Lugar.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-</style> --}}
 <div class="container align-middle modal-dialog-centered" style="">
-    <div class="row mx-auto">
+    <div class="row mx-auto align-middle">
       <div class="col">
-        <h1 class="display-1 bd-title">Crear Cuenta</h1>
+        <h1 class="titles">Crear Cuenta</h1>
         <p style="color:red" class="justify-content-md-center display-4">
       {{#if err}}{{err}}{{/if}}
         </p>
       </div>
     </div>
 </div>
-<div class="container-fluid align-middle justify-content-md-center">
-  <div class="row ">
+<div class="container-fluid align-middle justify-content-md-center ">
+  <div class="row  align-middle">
     <div class="col-sm col-md-6 offset-md-3">
       <form validated action="/signup" method="post">
         <div class="form-group">
