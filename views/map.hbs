@@ -1,3 +1,11 @@
+<style>
+  .input_none{
+    display: none;  
+  }
+  .pac-container {
+    z-index: 99888999 !important;
+  }
+</style>
 <nav class="navbar navbar-dark bg-dark navbar-nav navbar-expand-sm navbar-expand-sm-lg">
   <div class="form">
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,6 +84,8 @@
           <div class="form-group row">
             <div class="col-sm-12">
               <input type="text" class="form-control" id="direccion" placeholder="Dirección" name="location[address]">
+              <input type="text" name="location[coordinates][1]" id="lat" class="input_none">
+              <input type="text" name="location[coordinates][0]" id="lng" class="input_none">
             </div>  
 
           </div>
@@ -97,23 +107,30 @@
 
     /* New Dot */
 
-    const direccion = document.getElementById('direccion');
+
     const search = document.getElementById('address');
     const malandro = document.getElementById('malandro');
     const image = {
       url:'images/marcador-malandro-rojo-small.png',
       size: new google.maps.Size(59, 80)
     };
-
-    console.log(search);
-    var options = {
+    const options = {
       componentRestrictions: {country: 'mx'}
     };
+
+    let direccion = document.getElementById('direccion');
+    let lat = document.getElementById('lat');
+    let lng = document.getElementById('lng');
+
     function autoComplete(input) {
+      console.log('hola')
       const dropdown = new google.maps.places.Autocomplete(input, options);
       dropdown.addListener('place_changed', () => {
-        const place = dropdown.getPlace()
-        console.log(place.geometry.location.lat())
+        console.log('hola');
+        const place = dropdown.getPlace();
+        direccion.value = input.value;
+        lat.value = place.geometry.location.lat();
+        lng.value = place.geometry.location.lng();
         nuevaDireccion(place)
       });
 
@@ -129,7 +146,7 @@
       const map = new google.maps.Map(
         document.getElementById('map'),
         {
-          zoom: 15,
+          zoom: 19,
           center: center
         }
       )
@@ -142,7 +159,7 @@
       });
     }
 
-    malandro.addEventListener('click',autoComplete(search));
+    malandro.addEventListener('click',autoComplete(direccion));
 
     function startMap() {
 
@@ -160,7 +177,7 @@
             document.getElementById('map'),
             {
               center,
-              zoom: 20
+              zoom: 19
             }
           );
 
@@ -186,5 +203,7 @@
     }
 
     startMap();
+    // autoComplete(search);
 
+    malandro.addEventListener('click', autoComplete(direccion))
   </script>

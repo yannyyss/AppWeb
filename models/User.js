@@ -20,10 +20,10 @@ const userSchema = new Schema({
         default: 'images/user.png'
     },
 
-    complaint:[
+    places:[
         {
             type: Schema.Types.ObjectId,
-            ref: "Complaint",
+            ref: "Place",
         }
     ],
 },{
