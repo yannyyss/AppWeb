@@ -9,6 +9,7 @@ a {
 	display: flex;
 	flex-flow: row nowrap !important;
 	align-items: center;
+	flex-grow: 1;
 }
 .btn-primary {
 	color: #fff;
