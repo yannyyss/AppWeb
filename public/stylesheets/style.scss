@@ -35,19 +35,24 @@ a {
 .footer-nav {
 	position: absolute;
 	bottom: 0;
-	width: 100vw;
+	width: 100%;
 	padding: 0;
 	margin: 0;
 	background-color: #cccccc;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	max-height: 90px;
+}
+.iconimages img{
+	max-height: 50px;
+	max-width: 50px;
 }
 .iconimages:hover {
 	background-color: #707070;
 }
 #map {
 	width: 100%;
-	height: 70vh;
+	height: 83vh;
 	background-color: black;
 }
