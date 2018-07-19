@@ -1,7 +1,7 @@
 <div class="container align-middle modal-dialog-centered" style="">
     <div class="row mx-auto align-middle">
       <div class="col">
-        <h1 class="titles">Crear Cuenta</h1>
+        <h1 class="titles">Crear tu cuenta</h1>
         <p style="color:red;font-size:1.5em" class="justify-content-sm-center">{{#if err}}{{err}}{{/if}}</p>
       </div>
     </div>
@@ -27,8 +27,11 @@
           <label for="password2" class="class-name">Repite tu password:</label>
           <input class="form-control" id="password02" placeholder="Repite tu password" value="{{password2}}" required placeholder="Tu password de usuario" name="password2" type="password">
         </div>
-
-        <button type="submit" class="button-login btn col btn-form mx-auto btn-outline-success">Enviar</button>
+        <button type="submit" class="button-login btn col btn-form mx-auto btn-outline-success">Crea una nueva cuenta</button>
+        <h5 class="mensajes-bienvenida">¿Ya tienes una cuenta?¡Entra aquí!</h5>
+        <button class="btn col btn-form mx-auto btn-outline-success" onClick="javascript:location.href = '/login';">Ya tengo una cuenta</button>
+        <h5 class="mensajes-bienvenida">Si no quieres registrate ¡No te detengas! <br>accede como incógnito:</h5>
+        <button id="button-login-down" class="btn col btn-form mx-auto btn-outline-success" onClick="javascript:location.href = '/map';">Entrar sin una cuenta</button>
       </form>
     </div>
   </div>
