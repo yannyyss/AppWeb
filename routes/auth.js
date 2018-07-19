@@ -17,7 +17,7 @@ function isAuth(req, res, next) {
 
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	return res.redirect('/login?next=/activation');
+	return res.redirect('/login');
 }
 router.get('/confirm/:confirmCode', (req, res) => {
 	const code = req.params.confirmationCode;
