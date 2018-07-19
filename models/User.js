@@ -26,6 +26,7 @@ const userSchema = new Schema({
             ref: "Place",
         }
     ],
+    confirmationCode: String
 },{
     timestamps:{
         createdAt: 'created_at',
