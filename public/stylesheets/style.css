@@ -13,7 +13,8 @@ a {
   flex-grow: 1; }
 
 .titles {
-  margin-top: 25%; }
+  margin-top: 25%;
+  text-align: center; }
 
 .btn-primary {
   color: #fff;

@@ -61,14 +61,17 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', isAuth, (req, res, next) => {
-	console.log(req.query.next);
 	res.render('auth/login', { next: req.query.next });
 });
 
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
+router.post('/login', passport.authenticate('local',{
+	successRedirect:'/',
+	failureRedirect:'/login'
+}), (req, res, next) => {
 	if (req.body.next) res.redirect(req.body.next);
 	req.app.locals.loggedUser = req.user;
 	res.redirect('/map');
+	
 });
 
 router.get('/logout', (req, res, next) => {
