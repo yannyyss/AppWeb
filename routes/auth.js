@@ -17,7 +17,7 @@ function isAuth(req, res, next) {
 
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	return res.redirect('/login');
+	return res.redirect('/map');
 }
 router.get('/confirm/:confirmCode', (req, res) => {
 	const code = req.params.confirmationCode;
@@ -67,7 +67,7 @@ router.get('/login', isAuth, (req, res, next) => {
 router.post('/login', passport.authenticate('local',{
 	successRedirect:'/map',
 	failureRedirect:'/login'
-}), (req, res, next) => {
+}),(req, res, next) => {
 	if (req.body.next) res.redirect(req.body.next);
 	req.app.locals.loggedUser = req.user;
 	res.redirect('/map');

@@ -3,7 +3,7 @@ const router = express.Router();
 const Place = require('../models/Place');
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	return res.redirect('/login');
+	return res.redirect('/map');
 }
 /* Ejemplo:
 router.get('/map', (req, res) => {
@@ -35,7 +35,7 @@ router.get('/map', (req, res) => {
 
 module.exports = router;
 */
-router.get('/map',isLoggedIn, (req, res) => {
+router.get('/map',(req, res) => {
     if (Object.keys(req.query).length > 0) {
         console.log(Object.keys(req.query)); //imprime la llave de query
         Place.find({ tipodelugar: { $in: Object.keys(req.query)}}) //Busca en todos las instacias que se han creado con el modelo Place, el query que conincida con la key
