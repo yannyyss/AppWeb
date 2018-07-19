@@ -42,7 +42,12 @@ router.get('/map', (req, res) => {
         res.render('map', {items}); //muestra un json en el navegador
         });
     } else {
-        res.render('map'); //Else, muestra el mapa
+        Place.find()
+		.then((items) => {
+			items = JSON.stringify(items); //convierte el array a String
+			console.log('esto es raro', items);
+			res.render('map', { items }); //muestra un json en el navegador
+		}); //Else, muestra el mapa
     }
 })
 module.exports = router;

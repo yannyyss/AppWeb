@@ -105,7 +105,7 @@
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGQ8r0BfjX69HJHYdnGnoZ5K1m9YwjcQo&libraries=places"></script>
   <script>
-  
+
     /* New Dot */
 
     //const items = '{{items}}';
@@ -118,10 +118,10 @@
     const options = {
       componentRestrictions: {country: 'mx'}
     };
-    
+
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
-    
+
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
     let lng = document.getElementById('lng');
@@ -179,19 +179,22 @@
             document.getElementById('map'),
             {
               center,
-              zoom: 19
+              zoom: 15
             }
           );
+          if(items){
 
-
-          const myMarker = new google.maps.Marker({
-            position: center,
-            map: map,
-            title: "I'm here",
-            animation: google.maps.Animation.BOUNCE,
-            icon: image
-          });
-
+            for (var i = 0; i < items.length; i++) {
+              var item = items[i];
+              var title = item.tipodelugar + " " + item.comentario
+              var marker = new google.maps.Marker({
+                position: {lat: item.location.coordinates[1], lng: item.location.coordinates[0]},
+                map: map,
+                icon: image,
+                title: title,
+              });
+            }
+          }
           // User granted permission
           // Center the map in the position we got
         }, function () {
