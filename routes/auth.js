@@ -4,6 +4,7 @@ const User = require('../models/User');
 const passport = require('passport');
 const sendActivationLink = require('../helpers/mailer').sendActivationLink;
 const bcrypt = require('bcrypt');
+const Place = require('../models/Place');
 
 const errDict = {
 	UserExistsError: 'Este usuario ya existe'
@@ -18,15 +19,22 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
 	return res.redirect('/login?next=/activation');
 }
-router.get('/confirm/:confirmCode', (req, res)=>{
-  const code = req.params.confirmationCode;
-  User.findOneAndUpdate(code, {active:true},{new:true})
-  .then(()=>{
-    res.send('Tu cuenta está activa')
-    //res.redirect('auth/site');
-  })
-})
+router.get('/confirm/:confirmCode', (req, res) => {
+	const code = req.params.confirmationCode;
+	User.findOneAndUpdate(code, { active: true }, { new: true }).then(() => {
+		res.send('Tu cuenta está activa');
+		//res.redirect('auth/site');
+	});
+});
 
+router.get('/map', (req, res) => {
+	Place.find()
+		.then((items) => {
+			items = JSON.stringify(items); //convierte el array a String
+			console.log('esto es raro', items);
+			res.render('map', { items }); //muestra un json en el navegador
+		});
+});
 
 router.get('/signup', (req, res, next) => {
 	res.render('auth/signup');
@@ -38,7 +46,7 @@ router.post('/signup', (req, res, next) => {
 		res.render('auth/signup', req.body);
 	}
 	const hash = bcrypt.hashSync(req.body.email, bcrypt.genSaltSync(10)).split('/');
-  req.body.confirmationCode = hash;
+	req.body.confirmationCode = hash;
 	User.register(req.body, req.body.password)
 		.then((user) => {
 			//activation link
