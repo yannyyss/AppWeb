@@ -39,9 +39,10 @@ router.get('/map', (req, res) => {
         .then(items => {
         items = JSON.stringify(items); //convierte el array a String
         console.log("esto es raro", items);
-        res.render('map', { items }); //muestra un json en el navegador
+        res.render('map', {items}); //muestra un json en el navegador
         });
+    } else {
+        res.render('map'); //Else, muestra el mapa
     }
-    res.render('map'); //Else, muestra el mapa
 })
 module.exports = router;
