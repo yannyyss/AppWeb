@@ -90,6 +90,7 @@
               <input type="text" class="form-control" id="direccion" placeholder="Dirección" name="location[address]">
               <input type="text" name="location[coordinates][1]" id="lat" class="input_none">
               <input type="text" name="location[coordinates][0]" id="lng" class="input_none">
+              <input type="text" name="image" id="image" class="input_none">
             </div>  
 
           </div>
@@ -121,7 +122,7 @@
     const options = {
       componentRestrictions: {country: 'mx'}
     };
-
+    const tipodelugar = document.getElementById('tipodelugar');
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
 
@@ -165,6 +166,7 @@
     }
 
     malandro.addEventListener('click',autoComplete(direccion));
+    tipodelugar.addEventListener('change', tipoImg);
 
     function startMap() {
 
@@ -185,17 +187,43 @@
               zoom: 15
             }
           );
+          const myMarker = new google.maps.Marker({
+            position: center,
+            map: map,
+            title: "I'm here",
+            draggable: true,
+            animation: google.maps.Animation.BOUNCE,
+            icon: image
+          });
           if(items){
-
             for (var i = 0; i < items.length; i++) {
+
               var item = items[i];
-              var title = item.tipodelugar + " " + item.comentario
+              var title = item.tipodelugar;
+              var contentString = '<div class="container">'+
+                  '<h3><img src="'+item.image+'">'+ item.tipodelugar +'</h3>'+
+                  '<h5>'+ item.comentario +'</h5>'+
+                  '</div>';
+              var infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                // maxWidth: 200
+              });
               var marker = new google.maps.Marker({
                 position: {lat: item.location.coordinates[1], lng: item.location.coordinates[0]},
                 map: map,
                 icon: image,
                 title: title,
+                animation: google.maps.Animation.DROP,
               });
+              google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                return function() {
+                  infowindow.setContent(content);
+                  infowindow.open(map,marker);
+                  google.maps.event.addListener(map,'click', function(){ 
+                    infowindow.close();
+                  }); 
+                };
+              })(marker,contentString,infowindow)); 
             }
           }
           // User granted permission
@@ -215,16 +243,6 @@
 
     malandro.addEventListener('click', autoComplete(direccion));
 
-    /* No funciona el listener
-    malandro.addEventListener('keypress', myEventHandler, false);
-
-      function myEventHandler(e) {
-        var keyCode = e.keyCode;
-        if (keyCode == 13) {
-          autoComplete(direccion);
-        }
-      };
-      */
     jQuery(document).ready(function() {
       jQuery("[href]").each(function() {
         if (this.href == window.location.href) {
@@ -232,6 +250,29 @@
         }
       });
     });
-
+    function tipoImg(){
+      let img = document.getElementById('image')
+      console.log(tipodelugar.value)
+      switch(tipodelugar.value) {
+        case 'ROBO':
+          img.value = 'images/icono-robo.png'
+          break;
+        case 'ACOSO-SEXUAL':
+          img.value = 'images/icono-acoso-sexual.png'
+          break;
+        case 'GRUPOS-SOSPECHOSOS':
+          img.value = 'images/icono-grupos-sospechosos.png'
+          break;
+        case 'ENFRENTAMIENTOS-ARMADOS':
+          img.value = 'images/icono-enfrentamientos-armado'
+          break;
+        case 'SIN-ILUMINACION':
+          img.value = 'images/icono-sin-luz.png'
+          break;
+        case 'AGRESION':
+          img.value = 'images/icono-agresion.png'
+          break;
+      }
+    }
   </script>
 
