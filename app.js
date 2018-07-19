@@ -74,6 +74,6 @@ const filter = require('./routes/filter');
 app.use('/places', places);
 app.use('/', auth);
 app.use('/', index);
-app.use('/filter', filter);
+app.use('/', filter);
 
 module.exports = app;
