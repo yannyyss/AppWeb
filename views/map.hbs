@@ -207,5 +207,17 @@
     startMap();
     autoComplete(search);
 
-    malandro.addEventListener('click', autoComplete(direccion))
+    malandro.addEventListener('click', autoComplete(direccion));
+
+    /* No funciona el listener
+    malandro.addEventListener('keypress', myEventHandler, false);
+
+      function myEventHandler(e) {
+        var keyCode = e.keyCode;
+        if (keyCode == 13) {
+          autoComplete(direccion);
+        }
+      };
+      */
+      
   </script>
