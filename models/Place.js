@@ -19,6 +19,7 @@ const placeSchema = new Schema(
 				'AGRESION'
 			]
 		},
+		image: String,
 		location: {
 			type: {
 				type: String,
