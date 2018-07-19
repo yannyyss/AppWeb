@@ -225,6 +225,13 @@
         }
       };
       */
+    jQuery(document).ready(function() {
+      jQuery("[href]").each(function() {
+        if (this.href == window.location.href) {
+          jQuery(this).addClass("active");
+        }
+      });
+    });
 
   </script>
 
