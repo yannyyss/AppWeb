@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const passport = require('passport');
 const sendActivationLink = require('../helpers/mailer').sendActivationLink;
+const bcrypt = require('bcrypt');
 
 const errDict = {
 	UserExistsError: 'Este usuario ya existe'
@@ -17,14 +18,15 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
 	return res.redirect('/login?next=/activation');
 }
+router.get('/confirm/:confirmCode', (req, res)=>{
+  const code = req.params.confirmationCode;
+  User.findOneAndUpdate(code, {active:true},{new:true})
+  .then(()=>{
+    res.send('Tu cuenta está activa')
+    //res.redirect('auth/site');
+  })
+})
 
-router.get('/activation', isLoggedIn, (req, res, next) => {
-	User.findByIdAndUpdate(req.user._id, { active: true }, { new: true })
-		.then((user) => {
-			res.send('Activado, gracias ' + user.username);
-		})
-		.catch((e) => next(e));
-});
 
 router.get('/signup', (req, res, next) => {
 	res.render('auth/signup');
@@ -35,12 +37,14 @@ router.post('/signup', (req, res, next) => {
 		req.body.err = 'Tu password no coincide';
 		res.render('auth/signup', req.body);
 	}
+	const hash = bcrypt.hashSync(req.body.email, bcrypt.genSaltSync(10)).split('/');
+  req.body.confirmationCode = hash;
 	User.register(req.body, req.body.password)
 		.then((user) => {
 			//activation link
 			sendActivationLink(user);
 			//loguearlo automaticamente
-			res.redirect('/map');
+			res.redirect('/login');
 		})
 		.catch((e) => {
 			req.body.err = errDict[e.name];
