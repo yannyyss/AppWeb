@@ -27,14 +27,14 @@ router.get('/confirm/:confirmCode', (req, res) => {
 	});
 });
 
-router.get('/map', (req, res) => {
+/* router.get('/map', (req, res) => {
 	Place.find()
 		.then((items) => {
 			items = JSON.stringify(items); //convierte el array a String
 			console.log('esto es raro', items);
 			res.render('map', { items }); //muestra un json en el navegador
 		});
-});
+}); */
 
 router.get('/signup', (req, res, next) => {
 	res.render('auth/signup');
