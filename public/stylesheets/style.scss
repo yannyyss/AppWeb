@@ -12,10 +12,7 @@ a {
 	align-items: center;
 	flex-grow: 1;
 }
-.titles {
-	margin-top: 25%;
-	text-align: center;
-}
+
 .btn-primary {
 	color: #fff;
 	background-color: #343a40;
@@ -97,6 +94,8 @@ a {
 /*Login*/
 .titles {
 	color: #ccc;
+	margin-top: .5em;
+	text-align: center;
 }
 .class-name {
 	color: #ccc;
@@ -106,16 +105,13 @@ a {
 	height: 100%;
 }
 .button-login {
-	margin: 10% 0%;
-	
+	margin:1em;
 }
 .messages-login h4 {
 	color: #707070;
 	text-align: center;
-
+     margin: 1em;
 }
 #button-login-down {
-	margin-top: 5%;
-	margin-bottom: 10%;
-
+	margin-bottom: 5%;
 }
