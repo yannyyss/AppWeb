@@ -34,24 +34,25 @@
 </nav>
 
 <div id="map"></div>
+
 <footer>
   <nav class="footer-nav">
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?ROBO">
       <img src="images/icono-robo.png" width="140" height="140" alt="">
     </a>
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?ACOSO-SEXUAL">
       <img src="images/icono-acoso-sexual.png" width="140" height="140" alt="">
     </a>
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?GRUPOS-SOSPECHOSOS">
       <img src="images/icono-grupos-sospechosos.png" width="140" height="140" alt="">
     </a>
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?ENFRENTAMIENTOS-ARMADOS">
       <img src="images/icono-enfrentamientos-armados.png" width="140" height="140" alt="">
     </a>
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?SIN-ILUMINACION">
       <img src="images/icono-sin-luz.png" width="140" height="140" alt="">
     </a>
-    <a class="iconimages" href="#">
+    <a class="iconimages" href="/map?AGRESION">
       <img src="images/icono-agresion.png" width="140" height="140" alt="">
     </a>
   </nav>
@@ -73,12 +74,12 @@
           <div class="form-group">
             <select name="tipodelugar" id="tipodelugar" class="form-control">
               <option selected>Tipo de Incidente</option>
-              <option value="Robo">Robo</option>
-              <option value="Acoso Sexual">Acoso Sexual</option>
-              <option value="Grupos Sospechosos">Grupos Sospechosos</option>
-              <option value="Enfrentamientos Armados">Enfrentamientos Armados</option>
-              <option value="Sin Iluminación">Sin Iluminación</option>
-              <option value="Agresión">Agresión</option>
+              <option value="ROBO">Robo</option>
+              <option value="ACOSO-SEXUAL">Acoso Sexual</option>
+              <option value="GRUPOS-SOSPECHOSOS">Grupos Sospechosos</option>
+              <option value="ENFRENTAMIENTOS-ARMADOS">Enfrentamientos Armados</option>
+              <option value="SIN-ILUMINACION">Sin Iluminación</option>
+              <option value="AGRESION">Agresión</option>
             </select>
           </div> 
           <div class="form-group row">
@@ -104,10 +105,10 @@
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGQ8r0BfjX69HJHYdnGnoZ5K1m9YwjcQo&libraries=places"></script>
   <script>
-
+  
     /* New Dot */
 
-
+    //const items = '{{items}}';
     const search = document.getElementById('address');
     const malandro = document.getElementById('malandro');
     const image = {
@@ -117,16 +118,17 @@
     const options = {
       componentRestrictions: {country: 'mx'}
     };
+    
+    var items = {{{items}}} //Crea una variable con el array de items
+    console.log('los places', items); //imprime el array de items en la consola.
 
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
     let lng = document.getElementById('lng');
 
     function autoComplete(input) {
-      console.log('hola')
       const dropdown = new google.maps.places.Autocomplete(input, options);
       dropdown.addListener('place_changed', () => {
-        console.log('hola');
         const place = dropdown.getPlace();
         direccion.value = input.value;
         lat.value = place.geometry.location.lat();
@@ -205,5 +207,17 @@
     startMap();
     autoComplete(search);
 
-    malandro.addEventListener('click', autoComplete(direccion))
+    malandro.addEventListener('click', autoComplete(direccion));
+
+    /* No funciona el listener
+    malandro.addEventListener('keypress', myEventHandler, false);
+
+      function myEventHandler(e) {
+        var keyCode = e.keyCode;
+        if (keyCode == 13) {
+          autoComplete(direccion);
+        }
+      };
+      */
+      
   </script>

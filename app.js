@@ -69,9 +69,11 @@ app.use(passport.session());
 const index = require('./routes/index'); 
 const auth = require('./routes/auth');
 const places = require('./routes/places');
+const filter = require('./routes/filter');
 // Make everything available inside the routes: (/ + variable)
 app.use('/places', places);
 app.use('/', auth);
 app.use('/', index);
+app.use('/', filter);
 
 module.exports = app;

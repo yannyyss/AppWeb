@@ -11,12 +11,12 @@ const placeSchema = new Schema(
 		tipodelugar: {
 			type: String,
 			enum: [
-				'Robo',
-				'Acoso Sexual',
-				'Grupos Sospechosos',
-				'Enfrentamientos Armados',
-				'Sin Iluminación',
-				'Agresión'
+				'ROBO',
+				'ACOSO-SEXUAL',
+				'GRUPOS-SOSPECHOSOS',
+				'ENFRENTAMIENTOS-ARMADOS',
+				'SIN-ILUMINACION',
+				'AGRESION'
 			]
 		},
 		location: {
