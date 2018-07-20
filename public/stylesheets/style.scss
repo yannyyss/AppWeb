@@ -28,7 +28,7 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "https://fonts.googleapis.com/css?family=Poppins:300, 400, 500, 600, 700";
 
 p {
 	font-family: 'Poppins', sans-serif;
@@ -37,7 +37,9 @@ p {
 	line-height: 1.7em;
 	color: #999;
 }
-a, a:hover, a:focus {
+a,
+a:hover,
+a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
@@ -66,7 +68,8 @@ a, a:hover, a:focus {
 	font-size: 1.1em;
 	display: block;
 }
-#sidebar ul li.active > a, a[aria-expanded="true"] {
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
 	color: #fff;
 	background: #707070;
 }
@@ -76,8 +79,9 @@ a, a:hover, a:focus {
 	border-color: #f05657;
 	margin: 0 2%;
 }
-.btn-info.focus, .btn-info:focus {
-	box-shadow: 0 0 0 0.2rem rgba(204,204,204,.5);
+.btn-info.focus,
+.btn-info:focus {
+	box-shadow: 0 0 0 0.2rem rgba(204, 204, 204, .5);
 }
 #sidebar ul li a:hover {
 	color: #fff;
@@ -88,10 +92,12 @@ a, a:hover, a:focus {
 	background-color: #e45f45;
 	border: 2px solid #e45f45;
 }
-.btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
-    color: #fff;
-    background-color: #e45f45;
-    border-color: #e45f45;
+.btn-info:not(:disabled):not(.disabled).active,
+.btn-info:not(:disabled):not(.disabled):active,
+.show > .btn-info.dropdown-toggle {
+	color: #fff;
+	background-color: #e45f45;
+	border-color: #e45f45;
 }
 ul ul a {
 	font-size: 0.9em !important;
@@ -100,10 +106,10 @@ ul ul a {
 }
 @media (max-width: 768px) {
 	#sidebar {
-			margin-left: -250px;
+		margin-left: -250px;
 	}
 	#sidebar.active {
-			margin-left: 0;
+		margin-left: 0;
 	}
 }
 /* Layout */
@@ -115,7 +121,7 @@ ul ul a {
 	margin-left: 5%;
 }
 .form-group {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .btn-primary {
@@ -125,8 +131,8 @@ ul ul a {
 	margin-left: 100px;
 }
 .btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(240,86,87,.25);
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(240, 86, 87, .25);
 }
 .btn-primary:hover {
 	background-color: #707070;
@@ -140,12 +146,14 @@ ul ul a {
 	background-color: #f05657;
 	border-color: #f05657;
 }
-.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
+.btn-outline-success:not(:disabled):not(.disabled).active,
+.btn-outline-success:not(:disabled):not(.disabled):active,
+.show > .btn-outline-success.dropdown-toggle {
 	background-color: #f05657;
 	border-color: #f05657;
 }
 .btn-outline-success:focus {
-	box-shadow: 0 0 0 0.2rem rgba(240,86,87,.5);
+	box-shadow: 0 0 0 0.2rem rgba(240, 86, 87, .5);
 }
 .footer-nav {
 	position: absolute;
@@ -159,7 +167,7 @@ ul ul a {
 	justify-content: space-around;
 	max-height: 90px;
 }
-.iconimages img{
+.iconimages img {
 	max-height: 50px;
 	max-width: 50px;
 }
@@ -184,11 +192,10 @@ ul ul a {
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
-	
 }
 .index-background h2 {
 	color: #ccc;
-	padding:0 10%;
+	padding: 0 10%;
 }
 .index-background div h4 {
 	color: #ccc;
@@ -213,14 +220,18 @@ ul ul a {
 	height: 100%;
 }
 .button-login {
-	margin:1em;
+	margin: 1em;
 	margin-bottom: .5em;
 }
 .mensajes-bienvenida {
 	color: #707070;
 	text-align: center;
-	 margin: .5em;
+	margin: .5em;
 }
 #button-login-down {
 	margin-bottom: 5%;
+}
+ul.list-unstyled.components {
+	overflow-y: auto;
+	height: 83vh;
 }
