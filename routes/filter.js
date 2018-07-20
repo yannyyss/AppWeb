@@ -46,29 +46,27 @@ router.get('/map', (req, res) => {
 				res.render('map', { items }); //muestra un json en el navegador
 			});
 	} else {
-		Place.find().then((items) => {
-			items = JSON.stringify(items); //convierte el array a String
-			console.log('esto es raro', items);
-			res.render('map', { items }); //muestra un json en el navegador
-		}); //Else, muestra el mapa
+		if (req.user) {
+			req.body.user = req.user._id;
+			Promise.all([ Place.find(), User.findById(req.user._id).populate('places')])
+				.then((results) => {
+
+					const ctx = {
+						items: JSON.stringify(results[0]),
+                        user: results[1],
+                        places: JSON.stringify(results[1].places)
+					};
+					res.render('map', ctx);
+				})
+				.catch((e) => next(e));
+		} else {
+			Place.find().then((items) => {
+				items = JSON.stringify(items); //convierte el array a String
+				console.log('esto es raro', items);
+				res.render('map', { items }); //muestra un json en el navegador
+			}); //Else, muestra el mapa
+		}
 	}
 });
 
-router.get('/profile', isLoggedIn, (req, res) => {
-	if (req.user) {
-		req.body.user = req.user._id;
-		Promise.all([ Place.find(), User.findById(req.user._id).populate('places') ])
-			.then((results) => {
-				console.log(results);
-				const ctx = {
-					items: JSON.stringify(results[0]),
-					user: JSON.stringify(results[1])
-				};
-				res.render('map', ctx);
-			})
-			.catch((e) => next(e));
-	} else {
-		res.render('map');
-	}
-});
 module.exports = router;
