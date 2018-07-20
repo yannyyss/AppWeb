@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Place = require('../models/Place');
+const User = require('../models/User');
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	return res.redirect('/map');
+	return res.redirect('/login');
 }
 /* Ejemplo:
 router.get('/map', (req, res) => {
@@ -35,22 +36,39 @@ router.get('/map', (req, res) => {
 
 module.exports = router;
 */
-router.get('/map',(req, res) => {
-    if (Object.keys(req.query).length > 0) {
-        console.log(Object.keys(req.query)); //imprime la llave de query
-        Place.find({ tipodelugar: { $in: Object.keys(req.query)}}) //Busca en todos las instacias que se han creado con el modelo Place, el query que conincida con la key
-        .then(items => {
-        items = JSON.stringify(items); //convierte el array a String
-        console.log("esto es raro", items);
-        res.render('map', {items}); //muestra un json en el navegador
-        });
-    } else {
-        Place.find()
-		.then((items) => {
+router.get('/map', (req, res) => {
+	if (Object.keys(req.query).length > 0) {
+		console.log(Object.keys(req.query)); //imprime la llave de query
+		Place.find({ tipodelugar: { $in: Object.keys(req.query) } }) //Busca en todos las instacias que se han creado con el modelo Place, el query que conincida con la key
+			.then((items) => {
+				items = JSON.stringify(items); //convierte el array a String
+				console.log('esto es raro', items);
+				res.render('map', { items }); //muestra un json en el navegador
+			});
+	} else {
+		Place.find().then((items) => {
 			items = JSON.stringify(items); //convierte el array a String
 			console.log('esto es raro', items);
 			res.render('map', { items }); //muestra un json en el navegador
 		}); //Else, muestra el mapa
-    }
-})
+	}
+});
+
+router.get('/profile', isLoggedIn, (req, res) => {
+	if (req.user) {
+		req.body.user = req.user._id;
+		Promise.all([ Place.find(), User.findById(req.user._id).populate('places') ])
+			.then((results) => {
+				console.log(results);
+				const ctx = {
+					items: JSON.stringify(results[0]),
+					user: JSON.stringify(results[1])
+				};
+				res.render('map', ctx);
+			})
+			.catch((e) => next(e));
+	} else {
+		res.render('map');
+	}
+});
 module.exports = router;
