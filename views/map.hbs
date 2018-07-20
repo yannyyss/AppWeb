@@ -9,10 +9,17 @@
 
 <nav class="navbar navbar-dark bg-dark navbar-nav navbar-expand-sm navbar-expand-sm-lg">
   <div class="form">
+    {{#if user}}
     <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
       <span>Mi perfil</span>
     </button>
+    {{else}}
+    <a type="button" id="sidebarCollapse" class="btn btn-info" href="/signup">
+      <i class="fas fa-align-left"></i>
+      <span>Crear Cuenta</span>
+    </a>
+    {{/if}}
 
     <form class="form">
       <input class="form-control" type="search" placeholder="Search" id="address">
@@ -22,25 +29,23 @@
     </form>
   </div>
 </nav>
+{{#if user}}
 <div class="wrapper">
   <nav id="sidebar">
     <ul class="list-unstyled components">
-      {{#if user}}
+
       <li class="active">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis reportes</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
           {{#each user.places as |place|}}
           <li>
+            Tipo:{{place.tipodelugar}}
+            <br>
             <a id="{{@index}}" onclick="marcador(this.id)">
-              
               Lugar: {{place.location.address}}
             </a> 
             <br>
-            Tipo:{{place.tipodelugar}}
-            <br>
-
           </li>
-
           {{/each}}
         </ul>
       </li>
@@ -48,11 +53,17 @@
         <a href="/logout">Cerrar mi cuenta</a>
       </li>
     </ul>
-    {{/if}}
+
   </nav>
 
   <div id="map"></div>
 </div>
+{{else}}
+<div id="map"></div>
+{{/if}}
+
+
+
 <!--cierra el wrapped del sidebar -->
 <footer>
   <nav class="footer-nav">
@@ -178,39 +189,39 @@
     }
 
     function marcador(id){
-        var place = lugar[id]
-        const center = {
-          lat: place.location.coordinates[1],
-          lng: place.location.coordinates[0]
-        };
-        const map = new google.maps.Map(
+      var place = lugar[id]
+      const center = {
+        lat: place.location.coordinates[1],
+        lng: place.location.coordinates[0]
+      };
+      const map = new google.maps.Map(
         document.getElementById('map'),
         {
           zoom: 19,
           center: center
         }
       )
-        var title = place.tipodelugar;
-        var contentString = '<div class="container">'+
-            '<h3><img src="'+place.image+'">'+ place.tipodelugar +'</h3>'+
-            '<h5>'+ place.comentario +'</h5>'+
-            '</div>';
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString,
-          // maxWidth: 200
-        });
-        var marker = new google.maps.Marker({
-          position: center,
-          map: map,
-          icon: image,
-          title: title,
-          animation: google.maps.Animation.DROP,
-        });
-        marker.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
-            
-      
+      var title = place.tipodelugar;
+      var contentString = '<div class="container">'+
+          '<h4><img src="'+place.image+'">'+ place.tipodelugar +'</h4>'+
+          '<h6>'+ place.comentario +'</h6>'+
+          '</div>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 200
+      });
+      var marker = new google.maps.Marker({
+        position: center,
+        map: map,
+        icon: image,
+        title: title,
+        animation: google.maps.Animation.DROP,
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+
+
     }
     malandro.addEventListener('click',autoComplete(direccion));
     tipodelugar.addEventListener('change', tipoImg);
@@ -235,7 +246,7 @@
           const myMarker = new google.maps.Marker({
             position: center,
             map: map,
-            title: "I'm here",
+            title: "Aqui estoy",
             draggable: true,
             animation: google.maps.Animation.BOUNCE,
             icon: image
@@ -245,12 +256,12 @@
               var item = items[i];
               var title = item.tipodelugar;
               var contentString = '<div class="container">'+
-                  '<h3><img src="'+item.image+'">'+ item.tipodelugar +'</h3>'+
-                  '<h5>'+ item.comentario +'</h5>'+
+                  '<h4><img src="'+item.image+'">'+ item.tipodelugar +'</h4>'+
+                  '<h6>'+ item.comentario +'</h6>'+
                   '</div>';
               var infowindow = new google.maps.InfoWindow({
                 content: contentString,
-                // maxWidth: 200
+                maxWidth: 200
               });
               var marker = new google.maps.Marker({
                 position: {lat: item.location.coordinates[1], lng: item.location.coordinates[0]},
@@ -280,7 +291,7 @@
         // Browser says: Nah! I do not support this.
         console.log('Browser does not support geolocation.');
       }
-      
+
     }
     startMap();
     autoComplete(search);
