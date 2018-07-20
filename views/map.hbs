@@ -15,14 +15,14 @@
       <span>Mi perfil</span>
     </button>
     {{else}}
-    <a type="button" id="sidebarCollapse" class="btn btn-info" href="/signup">
+    <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
-      <span>Crear Cuenta</span>
-    </a>
+      <a href="/signup">Crear Cuenta</a>
+    </button>
     {{/if}}
 
     <form class="form">
-      <input class="form-control" type="search" placeholder="Search" id="address">
+      <input class="form-control" type="search" placeholder="Buscar Dirección" id="address">
       <button type="button" class="btn bg-dark" data-toggle="modal" data-target="#exampleModal" id="malandro">
         <img src="images/boton-superior-malandro-2.png" width="40" height="40" alt="malandro" >
       </button>
