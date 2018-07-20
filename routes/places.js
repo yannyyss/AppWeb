@@ -15,9 +15,6 @@ function isLoggedIn(req, res, next) {
 }
 /* map */
 
-router.get('/', isLoggedIn, (req, res) => {
-	res.render('map');
-});
 
 router.post('/new', (req, res, next) => {
 	if (req.user) {

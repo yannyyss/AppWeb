@@ -16,7 +16,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/login">Entrar a tu cuenta<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" href="/profile">
+        <li class="nav-item">
           <a class="nav-link" href="/profile">Perfil</a>
         </li>
         <li class="nav-item">
@@ -125,6 +125,8 @@
     const tipodelugar = document.getElementById('tipodelugar');
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
+    var user = {{{user}}} //Crea una variable con el array de items
+    console.log('eluser', user); //imprime el array de items en la consola.
 
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
@@ -274,5 +276,5 @@
           break;
       }
     }
-  </script>
+    </script>
 
