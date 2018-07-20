@@ -11,6 +11,7 @@ const placeSchema = new Schema(
 		tipodelugar: {
 			type: String,
 			enum: [
+				
 				'ROBO',
 				'ACOSO-SEXUAL',
 				'GRUPOS-SOSPECHOSOS',
