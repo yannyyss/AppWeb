@@ -6,14 +6,14 @@
     z-index: 99888999 !important;
   }
 </style>
-  
-  <nav class="navbar navbar-dark bg-dark navbar-nav navbar-expand-sm navbar-expand-sm-lg">
-    <div class="form">
-      <button type="button" id="sidebarCollapse" class="btn btn-info">
-        <i class="fas fa-align-left"></i>
-        <span>Mi perfil</span>
-      </button>
-    
+
+<nav class="navbar navbar-dark bg-dark navbar-nav navbar-expand-sm navbar-expand-sm-lg">
+  <div class="form">
+    <button type="button" id="sidebarCollapse" class="btn btn-info">
+      <i class="fas fa-align-left"></i>
+      <span>Mi perfil</span>
+    </button>
+
     <form class="form">
       <input class="form-control" type="search" placeholder="Search" id="address">
       <button type="button" class="btn bg-dark" data-toggle="modal" data-target="#exampleModal" id="malandro">
@@ -22,7 +22,6 @@
     </form>
     </div>
 </nav>
-
 <div class="wrapper">
   <nav id="sidebar">
     <ul class="list-unstyled components">
@@ -45,7 +44,7 @@
       </li>
     </ul>
   </nav>
-  
+
 <div id="map"></div>
 </div>
 <!--cierra el wrapped del sidebar -->
@@ -74,8 +73,6 @@
     </a>
   </nav>
 </footer>
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -106,7 +103,6 @@
               <input type="text" name="location[coordinates][0]" id="lng" class="input_none">
               <input type="text" name="image" id="image" class="input_none">
             </div>  
-
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
@@ -124,9 +120,7 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGQ8r0BfjX69HJHYdnGnoZ5K1m9YwjcQo&libraries=places"></script>
   <script>
-
     /* New Dot */
-
     //const items = '{{items}}';
     const search = document.getElementById('address');
     const malandro = document.getElementById('malandro');
@@ -140,11 +134,9 @@
     const tipodelugar = document.getElementById('tipodelugar');
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
-
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
     let lng = document.getElementById('lng');
-
     function autoComplete(input) {
       const dropdown = new google.maps.places.Autocomplete(input, options);
       dropdown.addListener('place_changed', () => {
@@ -154,11 +146,8 @@
         lng.value = place.geometry.location.lng();
         nuevaDireccion(place)
       });
-
     }
-
     function nuevaDireccion (place){
-
       const lugar = place;
       const center = {
         lat: lugar.geometry.location.lat(),
@@ -179,12 +168,9 @@
         icon: image
       });
     }
-
     malandro.addEventListener('click',autoComplete(direccion));
     tipodelugar.addEventListener('change', tipoImg);
-
     function startMap() {
-
       if (navigator.geolocation) {
         // Get current position
         // The permissions dialog will popup
@@ -212,7 +198,6 @@
           });
           if(items){
             for (var i = 0; i < items.length; i++) {
-
               var item = items[i];
               var title = item.tipodelugar;
               var contentString = '<div class="container">'+
@@ -252,12 +237,9 @@
         console.log('Browser does not support geolocation.');
       }
     }
-
     startMap();
     autoComplete(search);
-
     malandro.addEventListener('click', autoComplete(direccion));
-
     jQuery(document).ready(function() {
       jQuery("[href]").each(function() {
         if (this.href == window.location.href) {
@@ -291,11 +273,9 @@
     }
     /* SideBar */
     $(document).ready(function () {
-  
-        $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-        });
 
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
       });
+    });
   </script>
-
