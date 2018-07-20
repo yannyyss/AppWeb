@@ -6,24 +6,14 @@
     z-index: 99888999 !important;
   }
 </style>
+
 <nav class="navbar navbar-dark bg-dark navbar-nav navbar-expand-sm navbar-expand-sm-lg">
   <div class="form">
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button type="button" id="sidebarCollapse" class="btn btn-info">
+      <i class="fas fa-align-left"></i>
+      <span>Mi perfil</span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/login">Entrar a tu cuenta<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Salir de tu cuenta</a>
-        </li>
-      </ul>
-    </div>
+
     <form class="form">
       <input class="form-control" type="search" placeholder="Search" id="address">
       <button type="button" class="btn bg-dark" data-toggle="modal" data-target="#exampleModal" id="malandro">
@@ -32,9 +22,32 @@
     </form>
   </div>
 </nav>
+<div class="wrapper">
+  <nav id="sidebar">
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis reportes</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#">Dirección1</a>
+          </li>
+          <li>
+            <a href="#">Dirección2</a>
+          </li>
+          <li>
+            <a href="#">Dirección3</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Cerrar mi cuenta</a>
+      </li>
+    </ul>
+  </nav>
 
-<div id="map"></div>
-
+  <div id="map"></div>
+</div>
+<!--cierra el wrapped del sidebar -->
 <footer>
   <nav class="footer-nav">
     <a class="iconimages" href="/map">
@@ -60,8 +73,6 @@
     </a>
   </nav>
 </footer>
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -92,7 +103,6 @@
               <input type="text" name="location[coordinates][0]" id="lng" class="input_none">
               <input type="text" name="image" id="image" class="input_none">
             </div>  
-
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
@@ -109,9 +119,7 @@
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGQ8r0BfjX69HJHYdnGnoZ5K1m9YwjcQo&libraries=places"></script>
   <script>
-
     /* New Dot */
-
     //const items = '{{items}}';
     const search = document.getElementById('address');
     const malandro = document.getElementById('malandro');
@@ -125,13 +133,9 @@
     const tipodelugar = document.getElementById('tipodelugar');
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
-    var user = {{{user}}} //Crea una variable con el array de items
-    console.log('eluser', user); //imprime el array de items en la consola.
-
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
     let lng = document.getElementById('lng');
-
     function autoComplete(input) {
       const dropdown = new google.maps.places.Autocomplete(input, options);
       dropdown.addListener('place_changed', () => {
@@ -141,11 +145,8 @@
         lng.value = place.geometry.location.lng();
         nuevaDireccion(place)
       });
-
     }
-
     function nuevaDireccion (place){
-
       const lugar = place;
       const center = {
         lat: lugar.geometry.location.lat(),
@@ -166,12 +167,9 @@
         icon: image
       });
     }
-
     malandro.addEventListener('click',autoComplete(direccion));
     tipodelugar.addEventListener('change', tipoImg);
-
     function startMap() {
-
       if (navigator.geolocation) {
         // Get current position
         // The permissions dialog will popup
@@ -199,7 +197,6 @@
           });
           if(items){
             for (var i = 0; i < items.length; i++) {
-
               var item = items[i];
               var title = item.tipodelugar;
               var contentString = '<div class="container">'+
@@ -239,12 +236,9 @@
         console.log('Browser does not support geolocation.');
       }
     }
-
     startMap();
     autoComplete(search);
-
     malandro.addEventListener('click', autoComplete(direccion));
-
     jQuery(document).ready(function() {
       jQuery("[href]").each(function() {
         if (this.href == window.location.href) {
@@ -276,5 +270,11 @@
           break;
       }
     }
-    </script>
+    /* SideBar */
+    $(document).ready(function () {
 
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+      });
+    });
+  </script>
