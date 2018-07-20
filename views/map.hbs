@@ -20,32 +20,38 @@
         <img src="images/boton-superior-malandro-2.png" width="40" height="40" alt="malandro" >
       </button>
     </form>
-    </div>
+  </div>
 </nav>
 <div class="wrapper">
   <nav id="sidebar">
     <ul class="list-unstyled components">
+      {{#if user}}
       <li class="active">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis reportes</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
+          {{#each user.places as |place|}}
           <li>
-            <a href="#">Dirección1</a>
+            <a id="{{@index}}" onclick="marcador(this.id)">
+              
+              Lugar: {{place.location.address}}
+            </a> 
+            <br>
+            Tipo:{{place.tipodelugar}}
+            <br>
+
           </li>
-          <li>
-            <a href="#">Dirección2</a>
-          </li>
-          <li>
-            <a href="#">Dirección3</a>
-          </li>
+
+          {{/each}}
         </ul>
       </li>
       <li>
-        <a href="#">Cerrar mi cuenta</a>
+        <a href="/logout">Cerrar mi cuenta</a>
       </li>
     </ul>
+    {{/if}}
   </nav>
 
-<div id="map"></div>
+  <div id="map"></div>
 </div>
 <!--cierra el wrapped del sidebar -->
 <footer>
@@ -134,6 +140,8 @@
     const tipodelugar = document.getElementById('tipodelugar');
     var items = {{{items}}} //Crea una variable con el array de items
     console.log('los places', items); //imprime el array de items en la consola.
+    var lugar = {{{places}}} //Crea una variable con el array de items
+    console.log('los places', lugar); //imprime el array de items en la consola.
     let direccion = document.getElementById('direccion');
     let lat = document.getElementById('lat');
     let lng = document.getElementById('lng');
@@ -167,6 +175,42 @@
         animation: google.maps.Animation.BOUNCE,
         icon: image
       });
+    }
+
+    function marcador(id){
+        var place = lugar[id]
+        const center = {
+          lat: place.location.coordinates[1],
+          lng: place.location.coordinates[0]
+        };
+        const map = new google.maps.Map(
+        document.getElementById('map'),
+        {
+          zoom: 19,
+          center: center
+        }
+      )
+        var title = place.tipodelugar;
+        var contentString = '<div class="container">'+
+            '<h3><img src="'+place.image+'">'+ place.tipodelugar +'</h3>'+
+            '<h5>'+ place.comentario +'</h5>'+
+            '</div>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          // maxWidth: 200
+        });
+        var marker = new google.maps.Marker({
+          position: center,
+          map: map,
+          icon: image,
+          title: title,
+          animation: google.maps.Animation.DROP,
+        });
+        marker.addListener('click', function() {
+                infowindow.open(map, marker);
+              });
+            
+      
     }
     malandro.addEventListener('click',autoComplete(direccion));
     tipodelugar.addEventListener('change', tipoImg);
@@ -236,6 +280,7 @@
         // Browser says: Nah! I do not support this.
         console.log('Browser does not support geolocation.');
       }
+      
     }
     startMap();
     autoComplete(search);
