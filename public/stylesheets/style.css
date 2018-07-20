@@ -122,6 +122,10 @@ ul ul a {
   border-color: #343a40;
   margin-left: 100px; }
 
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(240, 86, 87, 0.25); }
+
 .btn-primary:hover {
   background-color: #707070;
   border-color: #707070; }
